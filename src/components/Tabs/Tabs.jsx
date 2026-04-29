@@ -1,5 +1,5 @@
 export const Tabs = ({ tabs, activeTabId, onTabSelected }) => {
-  const activeTab = tabs.find(tab => tab.id === activeTabId);
+  const activeTab = tabs.find(tab => tab.id === activeTabId) || tabs[0];
 
   return (
     <div data-cy="TabsComponent">
@@ -8,7 +8,7 @@ export const Tabs = ({ tabs, activeTabId, onTabSelected }) => {
           {tabs.map(tab => (
             <li
               key={tab.id}
-              className={activeTabId === tab.id ? 'is-active' : undefined}
+              className={activeTab.id === tab.id ? 'is-active' : undefined}
               data-cy="Tab"
             >
               <a
